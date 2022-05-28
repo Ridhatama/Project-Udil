@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour
 {   
     public Image fillBar;
     public float health;
-
+    
     public void LoseHealth(int value)
     {
         if (health <= 0)
@@ -24,7 +24,7 @@ public class HealthBar : MonoBehaviour
         if (health <= 0)
         {
             // Debug.Log("Died");
-            FindObjectOfType<LevelManager>().Restart();
+            FindObjectOfType<PlayerMovement>().PlayerDeath();
         }
     }
 }

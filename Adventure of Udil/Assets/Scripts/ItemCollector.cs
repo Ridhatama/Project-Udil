@@ -5,7 +5,7 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int Diamond = 0;
+    public int Diamond = 0;
     public bool Kunci = false;
     public AudioSource coinSound;
     public AudioSource KunciSound;
