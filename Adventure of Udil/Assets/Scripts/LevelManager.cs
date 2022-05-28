@@ -7,8 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     public void Restart()
     {   
-        // Restart scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        FindObjectOfType<GameOver>().isGameOver();
     }
 }

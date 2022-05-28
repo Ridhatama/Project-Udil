@@ -23,6 +23,7 @@ public class Door : MonoBehaviour
             if(Input.GetAxisRaw("Crouch") == 1 && item.Kunci){
                 sr.material = BlackMamba;
                 doorsound.Play();
+                FindObjectOfType<Finish>().isFinish();
                 Debug.Log("lele");
             }
         }

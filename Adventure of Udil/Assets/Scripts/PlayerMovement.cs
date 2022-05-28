@@ -19,13 +19,21 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource KillSound;
     public AudioSource HurtSound;
     public AudioSource JumpSound;
+    public AudioSource BGM;
+    public AudioSource GameOver;
+    private bool controlplayer;
+    public bool Dead;
+    private Collider2D playerCol;
+    public GameObject[] childObj;
     [SerializeField] private float hurtforce = 10f;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        playerCol = GetComponent<Collider2D>();
         matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         matDefault = sr.material;
+        controlplayer = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -93,13 +101,45 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        jump = false;
+
+        if(controlplayer == true)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+            jump = false;
+        }
     }
 
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         anim.SetBool("jumping", true);
+    }
+
+    public void PlayerDeath()
+    {
+        speed = 0;
+        Dead = true;
+        anim.SetBool("death", Dead);
+        BGM.Pause();
+        GameOver.Play();
+
+
+        controlplayer = false;
+        playerCol.enabled = false;
+        foreach(GameObject child in childObj)
+            child.SetActive(false); 
+
+        rb.gravityScale = 2.5f;
+        
+        rb.velocity = new Vector2(rb.velocity.x, 4f);
+        
+        StartCoroutine("Respawn");
+    }
+
+    IEnumerator Respawn()
+    {
+        Debug.Log("respawn test");
+        yield return new WaitForSeconds(2f);
+        FindObjectOfType<LevelManager>().Restart();
     }
 }
