@@ -8,20 +8,24 @@ public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
 
+    public PlayerMovement deadCheck;
 
     public GameObject PauseMenuUI;
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
+        if(!deadCheck.Dead)
         {
-            if(GameIsPaused)
+            if(Input.GetKeyDown(KeyCode.Escape)) 
             {
-                Resume();
-            }else
-            {
-                Pause();
+                if(GameIsPaused)
+                {
+                    Resume();
+                }else
+                {
+                    Pause();
+                }
             }
-        }   
+        }    
     }
     
     public void Resume(){
