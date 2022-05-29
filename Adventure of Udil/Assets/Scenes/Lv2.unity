@@ -8060,6 +8060,10 @@ PrefabInstance:
       propertyPath: diamondcount
       value: 
       objectReference: {fileID: 2037563012}
+    - target: {fileID: 2666647397464225811, guid: efe21f4c56324bc459db35eaf156c63f, type: 3}
+      propertyPath: fillBar
+      value: 
+      objectReference: {fileID: 1545174503}
     - target: {fileID: 2666647397464225820, guid: efe21f4c56324bc459db35eaf156c63f, type: 3}
       propertyPath: m_Name
       value: player02
