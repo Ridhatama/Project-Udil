@@ -7,21 +7,26 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
+    public PlayerMovement pm;
 
 
     public GameObject PauseMenuUI;
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
+        if(!pm.Dead)
         {
-            if(GameIsPaused)
+            if(Input.GetKeyDown(KeyCode.Escape)) 
             {
-                Resume();
-            }else
-            {
+                if(GameIsPaused)
+                {
+                    Resume();
+                }else
+                {
                 Pause();
-            }
-        }   
+                }
+            } 
+        }
+          
     }
     
     public void Resume(){
