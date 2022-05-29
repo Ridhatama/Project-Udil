@@ -84,9 +84,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(!controller.m_Grounded){
             anim.SetBool("jumping", true);
+            falling = true;
             
         }else if(controller.m_Grounded){
             anim.SetBool("jumping", false);
+            falling = false;
         }
 
         anim.SetFloat("y_velocity", rb.velocity.y);

@@ -13,7 +13,8 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-        public void RestartUI(){
+    public void RestartUI()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
