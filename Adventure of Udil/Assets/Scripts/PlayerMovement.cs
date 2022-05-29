@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             anim.SetBool("jumping", true);
-            falling = true;
             JumpSound.Play();
         }
 
@@ -96,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLand(){
         anim.SetBool("jumping", false);
-        falling = false;
     }
     public void OnCrouch(bool isCrouching){
         anim.SetBool("isCrouching", isCrouching);
